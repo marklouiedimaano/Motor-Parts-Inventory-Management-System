@@ -64,10 +64,10 @@ A dedicated `Input` helper validates integers, decimals, confirmations, and text
 
 ```
 MotorPartsInventory/
-├─ MotorPartsInventory.java   # Contains MotorPart, Transaction, InventoryManager, Input, and Main class
-├─ parts.dat                  # Auto-generated pipe-delimited parts database
-├─ history.dat                # Auto-generated pipe-delimited transaction audit log
-├─ report.txt                 # Exported inventory summary report (on demand)
+├─ MotorPartsInventory.java   
+├─ parts.dat                  
+├─ history.dat                
+├─ report.txt                 
 └─ README.md
 ```
 
