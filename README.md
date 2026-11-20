@@ -1,115 +1,222 @@
-# ⚙️ **Motor Parts Inventory System**
+⚙️ MOTOR PARTS INVENTORY SYSTEM
 
-### *A Java Console Application for Streamlined Auto Parts Tracking & Stock Management*
-
----
-
-## 📌 **1. Project Title**
-
-**Motor Parts Inventory System**  
-*A single-file Java console application built for efficient parts tracking, stock auditing, and automated reporting.*
+A Java Console Application for Efficient Auto Parts Tracking and Stock Management
 
 ---
 
-## 💡 **2. Description / Overview**
+📌 1. Project Title
 
-The **Motor Parts Inventory System** is an interactive Java console application designed to help auto shops, parts retailers, and small warehouses manage their spare parts inventory with accuracy and ease. Using lightweight file-based persistence (`.dat` pipe-delimited storage), the system tracks stock movements, flags low-inventory items, and generates clean summary reports.
+Motor Parts Inventory System
 
-The system allows you to:
-
-* Add, view, search, edit, and delete motor parts
-* Process sales/stock issuances, restocks, and physical count adjustments
-* Automatically detect items at or below minimum reorder thresholds
-* Generate category breakdowns, top-value stock lists, and exportable `.txt` reports
-* Maintain a timestamped audit trail of every inventory transaction
+A Java-based console application designed to help automotive shops and small businesses manage motor parts, monitor stock levels, record inventory transactions, and generate inventory reports efficiently.
 
 ---
 
-## 🌟 **Key Features at a Glance**
+💡 2. Project Description
 
-✔️ **Full Inventory CRUD**  
-Create, inspect, edit, and permanently remove parts with duplicate-ID protection and selective field editing.
+The Motor Parts Inventory System is an interactive Java console application developed to simplify the management of motor parts and automotive supplies. It provides an organized way to store, update, search, and monitor inventory records using a file-based storage system.
 
-✔️ **Multi-Criteria Search & Sorting**  
-Filter parts by ID, name, category, or supplier, and sort inventory by ID, Name, Category, Quantity (low to high), or Total Value (high to low).
+The application allows users to manage motor parts information, process sales and restocking transactions, adjust inventory quantities, and monitor items that are running low. It also provides inventory summaries, transaction history, and report generation to help users maintain accurate stock records.
 
-✔️ **Stock Movement & Audit Logging**  
-Every addition, sale (`SOLD`), replenishment (`RESTOCKED`), physical count adjustment (`ADJUSTED`), edit (`EDITED`), or deletion (`DELETED`) is automatically timestamped and recorded in `history.dat`.
-
-✔️ **Smart Low-Stock Alerts**  
-Displays startup notifications when parts hit or drop below their minimum stock level and calculates suggested reorder quantities (targeting $2\times$ minimum stock).
-
-✔️ **Analytics & Report Export**  
-View total inventory valuation, unit counts, category summaries, top 3 highest-value items, and export a formatted report to `report.txt`.
-
-✔️ **Crash-Resistant Console Input**  
-A dedicated `Input` helper validates integers, decimals, confirmations, and text strings—sanitizing pipe (`|`) delimiters to prevent file corruption.
+The system uses Java Object-Oriented Programming (OOP) concepts and file handling to provide a simple, reliable, and user-friendly inventory management solution.
 
 ---
 
-## 🧬 **3. OOP & Java Concepts Applied**
+🎯 3. Problem Being Addressed
 
-* **Encapsulation:** `MotorPart` and `Transaction` keep fields `private` (with `final` identifiers on immutable transaction records and part IDs) and expose controlled getters, setters, and domain methods (`getTotalValue()`, `isLowStock()`).
-* **Separation of Concerns:** The application is cleanly divided into four cohesive components within `MotorPartsInventory.java`:
-  * `MotorPart` — Domain model & CSV/pipe serialization
-  * `Transaction` — Audit trail model with `Type` enum (`ADDED`, `SOLD`, `RESTOCKED`, `ADJUSTED`, `EDITED`, `DELETED`)
-  * `InventoryManager` — Core business logic, stream queries, reporting, and file I/O
-  * `Input` & `MotorPartsInventory` — Input validation and console UI presentation
-* **Java Streams & Collections:** Uses `LinkedHashMap` for insertion-ordered lookups, `TreeMap` / `TreeSet` for sorted category aggregations, and Java Streams for searching, filtering, sorting, and valuation calculations.
-* **File I/O Persistence (`java.nio.file`):** Automatically loads and saves state to `parts.dat` and `history.dat` in UTF-8 without needing an external database.
+Many small automotive shops and motor parts businesses still manage their inventory manually using notebooks or spreadsheets. This process can be time-consuming and may result in inaccurate stock records, misplaced information, and difficulties monitoring available supplies.
+
+The project addresses the following problems:
+
+- Difficulty tracking available motor parts and their quantities.
+- Errors in recording sales, restocking, and inventory adjustments.
+- Lack of automatic notifications for low-stock items.
+- Difficulty searching for specific motor parts and supplier information.
+- Time-consuming preparation of inventory summaries and reports.
+- Lack of organized transaction records for monitoring inventory activities.
+
+Through this system, users can manage their inventory more efficiently, reduce manual recording errors, and maintain organized inventory information.
 
 ---
 
-## 🗂️ **4. Program Structure**
+🎯 4. Project Objectives
 
-```
+The main objective of the project is to develop a Java-based Motor Parts Inventory System that improves the tracking and management of automotive parts.
+
+Specifically, the project aims to:
+
+1. Develop a system that allows users to add, view, search, edit, and delete motor parts records.
+2. Provide accurate monitoring of available stock quantities.
+3. Implement sales, restocking, and stock adjustment transactions.
+4. Automatically identify motor parts that reach or fall below their minimum stock levels.
+5. Generate inventory summaries and reports for easier monitoring.
+6. Maintain a transaction history to track inventory changes.
+7. Apply Object-Oriented Programming concepts in developing a functional Java application.
+8. Store inventory records using file handling so that information remains available after closing the program.
+
+---
+
+👥 5. Target Users
+
+The system is intended for the following users:
+
+- Automotive Shop Owners – Can monitor available motor parts and check the overall inventory.
+- Inventory Managers – Can update stock quantities, manage parts information, and monitor low-stock products.
+- Store Employees – Can record sales, restocking activities, and inventory adjustments.
+- Small Motor Parts Businesses – Can use the application to organize their inventory without requiring an expensive inventory management system.
+
+---
+
+🌟 6. Main Features
+
+A. Inventory Management
+
+- Add new motor parts.
+- View all available inventory records.
+- Edit existing motor parts information.
+- Delete unwanted or discontinued parts.
+- Prevent duplicate part IDs.
+
+B. Search and Sorting
+
+- Search parts using their ID, name, category, or supplier.
+- Sort inventory by ID, name, category, quantity, and total value.
+
+C. Stock Management
+
+- Record sold or issued motor parts.
+- Restock existing motor parts.
+- Adjust stock quantities based on physical inventory counts.
+- Automatically calculate remaining stock quantities.
+
+D. Low-Stock Alerts
+
+- Identify items that reach or fall below the minimum stock level.
+- Display low-stock notifications.
+- Calculate suggested reorder quantities.
+
+E. Reports and Analytics
+
+- Calculate total inventory value.
+- Display total units in stock.
+- Generate category summaries.
+- Identify the top three highest-value inventory items.
+- Export inventory reports into a text file.
+
+F. Transaction History
+
+- Record every inventory transaction.
+- Store transaction dates and times.
+- Track added, sold, restocked, adjusted, edited, and deleted items.
+
+G. File-Based Data Storage
+
+- Save inventory records in "parts.dat".
+- Save transaction records in "history.dat".
+- Automatically load saved information when the application starts.
+
+---
+
+🛠️ 7. Technologies Used
+
+The following technologies and tools are used in developing the project:
+
+- Programming Language: Java
+- Development Environment: Any Java-compatible IDE or text editor.
+- Java Development Kit: JDK 11 or higher.
+- Data Storage: File-based storage using ".dat" files.
+- File Handling: Java NIO ("java.nio.file").
+- Collections Framework: LinkedHashMap, TreeMap, TreeSet, and List.
+- Java Streams: Used for searching, filtering, sorting, and calculating inventory data.
+- Documentation: README.md
+- Version Control: Git and GitHub (if used by the team).
+
+---
+
+👨‍💻 8. Team Members and Roles
+
+Team Member| Assigned Role
+Jessie Boy Garcia| Team Leader
+Mark Louie Dimaano| Documentation
+Ser James Abante| Lead Programmer
+KlarkLevin John Dollete| Assistant Programmer
+
+📋 Responsibilities
+
+1. Jessie Boy Garcia – Team Leader
+
+- Leads and coordinates the development team.
+- Assigns tasks and monitors project progress.
+- Ensures that project requirements are completed.
+
+2. Mark Louie Dimaano – Documentation
+
+- Prepares the project documentation and README file.
+- Organizes project descriptions, objectives, and technical information.
+- Documents the system's features and instructions.
+
+3. Ser James Abante – Lead Programmer
+
+- Leads the programming and development of the application.
+- Implements the main system functions and program structure.
+- Ensures that the system operates properly.
+
+4. KlarkLevin John Dollete – Assistant Programmer
+
+- Assists in writing and improving the Java code.
+- Helps identify and fix programming errors.
+- Supports the testing and improvement of system functionality.
+
+---
+
+🧬 9. OOP Concepts Demonstrated
+
+The project demonstrates important Object-Oriented Programming concepts in Java.
+
+A. Encapsulation
+
+The "MotorPart" and "Transaction" classes use private fields to protect their data. Getters, setters, and methods provide controlled access to information.
+
+B. Abstraction
+
+The system separates inventory operations and data management from the main user interface. The "InventoryManager" class handles the main inventory operations, while the main class manages user interaction.
+
+C. Separation of Concerns
+
+The program is organized into different classes, each with its own responsibility:
+
+- "MotorPart" – Stores motor parts information.
+- "Transaction" – Stores inventory transaction records.
+- "InventoryManager" – Handles inventory operations and file management.
+- "Input" – Handles user input validation.
+- "MotorPartsInventory" – Manages the main console interface.
+
+D. Polymorphism and Other Java Concepts
+
+The application also uses Java features such as enums, collections, streams, and methods to organize and process inventory information. These support the system's functionality and maintainability.
+
+---
+
+▶️ 10. Instructions for Running the Program
+
+🖥️ System Requirements
+
+🗂️ **Program Structure**
+
+```text
 MotorPartsInventory/
 ├─ MotorPartsInventory.java   
 ├─ parts.dat                  
 ├─ history.dat                
 ├─ report.txt                 
 └─ README.md
-```
-
-### 🧩 **Class Relationship Overview**
-
-```
-MotorPartsInventory (Main UI Controller)
-   ├─ uses → Input (validated console scanner)
-   └─ delegates to → InventoryManager
-                        ├─ manages → Map<String, MotorPart> (persisted to parts.dat)
-                        └─ manages → List<Transaction>     (persisted to history.dat)
-```
 
 ---
 
-## ▶️ **5. How to Run the Program**
+📸 11. Sample Screenshots
 
-### 🧰 **Prerequisites**
+The following screenshots should be included to demonstrate the actual appearance and functionality of the application.
 
-* **Java Development Kit (JDK) 11 or higher** (uses `String.isBlank()` and `String.repeat()`).
-
-### 🚀 **Steps to Run**
-
-1. Save the source code as `MotorPartsInventory.java`.
-2. Open a terminal in the folder containing the file.
-3. Compile the program:
-   ```bash
-   javac MotorPartsInventory.java
-   ```
-4. Run the application:
-   ```bash
-   java MotorPartsInventory
-   ```
-5. Use the numbered menu (`0–11`) to manage parts, process stock movements, and view reports. Data is saved automatically after changes and upon selecting `0. Save & exit`.
-
----
-
-## 🖥️ **6. Sample Console Output**
-
-*(User inputs shown after prompts)*
-
-```text
 ==========================================
    || MOTOR PARTS INVENTORY SYSTEM ||
 ==========================================
@@ -136,44 +243,57 @@ Minimum stock level (reorder alert): 10
 Unit price: PHP 1850.00
 
  Part added successfully.
-```
-
-📦 **Selling Stock Example**
-
-```text
-Enter choice: 5
-
-- Sell / Issue Stock -
-Part ID (blank to cancel): BRK-101
- Ceramic Brake Pads - available: 25
-Quantity to sell: 16
-Note / customer / job (optional): Job #402 - Toyota Vios
- Sold 16. Total: $29600.00. Remaining: 9
- Warning: stock is now at/below the minimum level (10).
-```
-
-📊 **Transaction History Example**
-
-```text
-TIME                PART     TYPE     CHANGE NOTE
---------------------------------------------------------------------------------
-2026-11-17 12:35:10 BRK-101  SOLD        -16 Job #402 - Toyota Vios
-2026-11-17 12:34:02 BRK-101  ADDED       +25 New part: Ceramic Brake Pads
-```
 
 ---
 
-## 👥 **7. Authors & Acknowledgements**
+⚠️ 12. Known Limitations
 
-* **Author:** *(Add your name / group members and GitHub profile links here)*
-* **Acknowledgements:** Built as an Object-Oriented Programming final project utilizing Java Collections, Streams, and `java.nio.file` persistence.
+Although the Motor Parts Inventory System provides essential inventory management functions, it has some limitations:
+
+- The application currently operates through a command-line interface and does not have a graphical user interface.
+- The system uses local ".dat" files instead of an online database.
+- It does not currently support multiple users accessing the inventory simultaneously.
+- There is no username and password authentication.
+- The system requires users to operate the application through the terminal.
+- Reports are generated in text format rather than directly producing Excel or PDF files.
+- Data is stored locally, so users must maintain backups to prevent data loss.
 
 ---
 
-## 🚀 **8. Future Enhancements**
+🚀 13. Future Improvements
 
-* 🗃️ **Database Integration:** Migrate from `.dat` flat files to SQLite or MySQL via JDBC.
-* 🔐 **Role-Based Access Control:** Add user logins separating cashiers/staff from inventory managers.
-* 🧾 **Receipt & Purchase Order Generation:** Generate printable customer receipts and supplier POs.
-* 📊 **CSV / Excel Export:** Add direct `.csv` or `.xlsx` export alongside `report.txt`.
-* 🖥️ **Graphical User Interface (GUI):** Build a JavaFX or Swing dashboard with real-time stock charts.
+The following improvements may be implemented in future versions:
+
+1. Graphical User Interface (GUI) – Develop a more user-friendly interface using Java Swing or JavaFX.
+2. Database Integration – Use MySQL or SQLite to provide more advanced data storage and management.
+3. User Authentication – Add login accounts and role-based access for administrators and employees.
+4. Receipt Generation – Generate receipts for every recorded sale.
+5. Advanced Reporting – Support exporting inventory reports to Excel and PDF formats.
+6. Barcode Scanning – Add barcode support for faster identification of motor parts.
+7. Cloud Backup – Allow users to back up inventory information online.
+8. Sales Analytics – Provide more detailed sales summaries and inventory performance reports.
+
+---
+
+🏆 14. Project Contributors
+
+This project was developed through the collaboration and contributions of the following team members:
+
+- Jessie Boy Garcia – Team Leader
+- Mark Louie Dimaano – Documentation
+- Ser James Abante – Lead Programmer
+- KlarkLevin John Dollete – Assistant Programmer
+
+🙏 Acknowledgement
+
+We would like to acknowledge the efforts and cooperation of all team members who contributed their time, knowledge, and skills to complete the Motor Parts Inventory System. This project demonstrates our understanding of Java programming, Object-Oriented Programming principles, file handling, and inventory management.
+
+Through teamwork and collaboration, we were able to develop an application that provides a practical solution for managing motor parts inventory.
+
+---
+
+📌 Project Information
+
+- Project: Motor Parts Inventory System
+- Programming Language: Java
+- Project Type: Object-Oriented Programming Final Project
